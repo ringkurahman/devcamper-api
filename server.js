@@ -1,12 +1,15 @@
 const express = require('express')
-const dotenv = require('dotenv')
-// Import Route files
 const bootcamps = require('./routes/bootcamps')
-
-// Import env vars
+const dotenv = require('dotenv')
 dotenv.config({ path: './config/config.env' })
+const logger = require('./middleware/logger')
+
+
 
 const app = express()
+
+// Middleware
+app.use(logger)
 
 // Mount router
 app.use('/api/v1/bootcamps', bootcamps)
