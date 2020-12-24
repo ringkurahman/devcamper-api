@@ -1,5 +1,6 @@
 const express = require('express')
 const bootcamps = require('./routes/bootcamps')
+const courses = require('./routes/courses')
 const dotenv = require('dotenv')
 dotenv.config({ path: './config/config.env' })
 const morgan = require('morgan')
@@ -23,6 +24,7 @@ if (process.env.NODE_ENV === 'development') {
 
 // Mount router
 app.use('/api/v1/bootcamps', bootcamps)
+app.use('/api/v1/courses', courses)
 
 // Error Handler
 app.use(errorHandler)
