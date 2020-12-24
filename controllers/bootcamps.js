@@ -78,6 +78,8 @@ exports.getBootcamps = asyncHandler(async (req, res, next) => {
     })
 })
 
+
+
 // @desc        Get single bootcamp
 // @route       GET /api/v1/bootcamps/:id
 // @access      Public
