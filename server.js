@@ -1,9 +1,11 @@
+const path = require('path')
 const express = require('express')
 const bootcamps = require('./routes/bootcamps')
 const courses = require('./routes/courses')
 const dotenv = require('dotenv')
 dotenv.config({ path: './config/config.env' })
 const morgan = require('morgan')
+const fileupload = require('express-fileupload')
 const errorHandler = require('./middleware/error')
 const colors = require('colors')
 const connectDB = require('./config/db')
@@ -21,6 +23,12 @@ app.use(express.json())
 if (process.env.NODE_ENV === 'development') {
     app.use(morgan('dev'))
 }
+
+// File Upload
+app.use(fileupload())
+
+// Set static folder for image files
+app.use(express.static(path.join(__dirname, 'public')))
 
 // Mount router
 app.use('/api/v1/bootcamps', bootcamps)
