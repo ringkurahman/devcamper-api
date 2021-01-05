@@ -1,8 +1,11 @@
 const path = require('path')
 const express = require('express')
+
 const bootcamps = require('./routes/bootcamps')
 const courses = require('./routes/courses')
 const auth = require('./routes/auth')
+const users = require('./routes/users')
+
 const dotenv = require('dotenv')
 dotenv.config({ path: './config/config.env' })
 const morgan = require('morgan')
@@ -11,6 +14,7 @@ const cookieParser = require('cookie-parser')
 const errorHandler = require('./middleware/error')
 const colors = require('colors')
 const connectDB = require('./config/db')
+
 
 
 // Connect Database
@@ -39,6 +43,7 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use('/api/v1/bootcamps', bootcamps)
 app.use('/api/v1/courses', courses)
 app.use('/api/v1/auth', auth)
+app.use('/api/v1/users', users)
 
 // Error Handler
 app.use(errorHandler)
